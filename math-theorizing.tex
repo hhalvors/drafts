@@ -1,0 +1,296 @@
+\documentclass[12pt,fleqn]{article}
+\title{What is a mathematical theory?}
+\author{Hans Halvorson}
+\date{\today}
+\usepackage{doi}
+\usepackage{amssymb}
+\usepackage[backend=biber,natbib=true,style=authoryear]{biblatex}
+\addbibresource{master.bib}
+\begin{document}
+
+\maketitle
+
+%% careful about wild wild west
+
+%% what is the content learned in a course / contained in a textbook?
+
+%% suppes set-theoretic predicates
+
+%% GTR relations between models 
+
+When I reflect on my experience learning the mathematical theory of
+groups \citep[see][]{hungerford}, it strikes me that there was an
+ambiguity about which theory we were learning. In the earliest
+lessons, we derived consequences from the axiomatic theory of
+groups. For example, formulating the theory in signature
+$\Sigma _0=\{ \circ ,^{-1},e\}$, with axioms such as associativity and
+$\forall x(x\circ x^{-1}=e=x^{-1}\circ x)$, we quickly derived:
+\[ \begin{array}{ll}
+     \forall x(x\circ x=x\to x=e ) ,\\
+     \forall x((x^{-1})^{-1}=x), \\
+     \forall x,y((x\circ y)^{-1}=y^{-1}\circ x^{-1}) ,\end{array}
+\]
+each of which is a $\Sigma _0$-sentence, i.e.\ a sentence in the
+first-order language of group theory. That is, these results are of
+the form $T\vdash\phi$, where $T$ is the first-order theory of groups.
+
+It might come as a surprise to a non-mathematician that a typical
+textbook of group theory quickly switches to a different language with
+different inference rules, and it derives a very different kind of
+result. In short, most group-theoretic theorems are not results in the
+first-order theory of groups, but results about the structure of
+groups. For example, picking an exercise at random from the early
+pages of \citep{hungerford}:
+\begin{quote} (*) If $G$ is a cyclic group of order $n$ and $k|n$,
+  then $G$ has exactly one subgroup of order $k$. \end{quote} This
+result is not a sentence in the first-order theory of groups, and not
+even in a higher-order theory based on $\Sigma _0$. Indeed, (*)
+quantifies over groups and makes use of predicates such as ``$x$ is
+cyclic'' that apply to groups. Which language do these predicates come
+from? And which axioms are we allowed to use to prove (*)?
+
+For clarity's sake, let's use ``group theory'' (with small ``g'') to
+denote the standard first-order theory, and let's use ``Group theory''
+(with big ``G'') to denote whatever the theory is in which results
+such as (*) are stated and derived. To anyone who has studied even
+undergraduate algebra, it will be clear that a typical course spends
+much more time talking about the structure of groups (i.e.\ deriving
+results in Group theory) that it does deriving results in group
+theory.
+
+The move between group theory and Group theory is hardly noticeable to
+the student learning abstract mathematics. While the language and
+inference rules of group theory are stated completely explicitly at
+the beginning of the textbook, the language and inference rules of
+Group theory are implicit, and are reinforced by following the example
+of the professor or the author of the textbook. Nonetheless, the fact
+that there really are \underline{two} theories in play poses a bit of
+a puzzle for the philosopher who wants to understand the nature of
+mathematical theories, and the epistemic commitments they involve.
+
+To put the puzzle into question form:
+\begin{quote} What is Group theory? \end{quote} Or even more
+basically:
+\begin{quote} In a typical textbook of g/Group theory, what is the
+  language in which the theorems are stated, and what are the axioms
+  from which the results are derived? \end{quote} The first, and most
+obvious, proposal is that Group theory is just the theory of certain
+structures that live in the set-theoretic universe. In fact, I agree
+completely with the spirit of that proposal --- and as a practical way
+of thinking, it is precise enough. But I'm still bothered by the fact
+that Group theory isn't clearly articulated in the way that group
+theory is.\footnote{If one really doesn't see the problem I'm getting
+  at, then try to imagine that you are set the task of writing an
+  automated theorem prover (or verifier) for Group theory. What is the
+  permitted syntax in these proofs, and what are the inference rules?}
+
+I think the intuitive idea here has to be the following:
+\begin{quote}
+  ($\dagger$) The predicates and relation symbols of (big ``G'') Group
+  theory are definable in the language of set theory, and the results
+  of Group theory are those theorems of set theory that are formulated
+  in this extended language. \end{quote} As stated, ($\dagger$) would
+make Group theory into a definitional extension of ZF set theory ---
+and that can't be right.\footnote{I'm going to assume that ZF set
+  theory is the relevant foundational theory. I don't think anything I
+  say will depend on that.} In fact, if we assume --- as is typical
+--- that a definitional extension of a theory is equivalent to the
+original theory, then ($\dagger$) would say that Group theory and ZF
+set theory are the same theory. That does too much violence to
+mathematical practice. The Group theorist has a domain of study, and
+it is not the same as that of the set theorist.
+
+%% obviously it can be "reduced to" set theory. But what is the
+%% relation between the theories?
+
+It seems then that we need to modify ($\dagger$) with some kind of
+domain restriction: Group theory should be \emph{about} the structure
+of groups and not about arbitrary sets. Can we say that Group theory
+is the theory in the extended language of set theory that applies to
+groups, i.e.\ those things that satisfy the set-theoretic predicate
+for being a group? But it's not at all clear how we could make sense
+of this notion of ``applying to''. After all, any theorem $\phi$ of
+set theory is equivalent to
+\[ \phi\wedge \forall x(\mathsf{Grp}(x)\to x=x) , \] which seems to
+apply to groups. One could try other, more sophisticated, ways of 
+
+To be slightly more precise, we could actually take the $\mathsf{Grp}$
+predicate to range over functional relations of type $G\times G\to G$
+(thus identifying the group with the function
+$\circ ^G:G\times G\to G$). For example, we could say that $x$ is a
+``group'' just in case there is a set $G$ such that $x$ is an element
+of $P(G\times G\times G)$ that has the relevant properties. We would
+just need then to verify that all the properties are definable in the
+language of set theory --- and assuredly they are.  We could then go
+on to use set-theory to define the notion of a homomorphism between
+groups, and to define concepts such as subgroups. The proposal then is
+to \emph{extend} the language $\{ \in \}$ of ZF set theory by the
+addition of these new predicate and relation symbols, e.g.\
+$\mathsf{Grp}$, $\mathsf{SubGrp}$.
+
+Thus, we have three signatures in play:
+\begin{itemize} \item $\Sigma _0= \{ \circ \}$ for group theory.
+\item $\Sigma _1=\{\in \}$ for set theory.
+\item $\Sigma _2=\{\in ,\mathsf{Grp},\dots \}$ for Group theory.
+\end{itemize}
+
+Consider the theory $Z$ in $\Sigma ^+$ 
+
+
+
+Claim: There is a translation of first-order group theory into the
+theory of models of first-order group theory. In particular, 
+
+Let's look at a simpler example.
+
+Now here is what I want to get straight on: in general, to define a
+notion in a theory $S$ is the same thing as interpreting some other
+theory $T$ into $S$. For example, to define the inverse function
+$^{-1}$ in group theory with signature $\{ \circ ,e\}$ is to show that
+group theory with signature $\{ \circ ,e,^{-1} \}$ can be interpreted
+into the former theory. More precisely, if we introduce the relation
+$\theta$ by 
+\[ \theta (x,y) \leftrightarrow x\circ y = e ,\] then it can be shown
+that $\theta$ is functional.
+
+But defining group-theoretic notions in set theory seems to be of a
+different nature. The first disanalogy is that a group is (obviously)
+not just a kind of set; it is a set plus some ``structure'', which in
+this case, is just other sets and relations between them. If we were
+going to try for a rigorous definition, we could start by defining a
+predicate $\mathsf{func}(x,x,x)$ that picks out the elements of the
+power set $P(G\times G\times G)$ that are functional
+relations. ... the relevant predicate would look something like:
+\begin{quote} $\mathsf{Grp}(x,y)$ iff $y$ is a functional relation on
+  $\mathsf{prod}(x,x,x)$ that obeys the relevant axioms. \end{quote}
+
+
+***
+
+There are, of course, some obvious relations between group theory and
+Group theory. In particular, each $\Sigma$-sentence $\phi$ uniquely
+determines a corresponding elementary class (viz.\ all groups that
+satisfy $\phi$), which is an obvious case of a predicate of Group
+theory. Thus, sentences of group theory give rise to predicates of
+Group theory.
+
+
+Question: With the resources of set-theory we can define
+
+Question: Is there sense to be made of the idea of a result being
+provable in all models of ZF set theory?
+
+Question: Is there a sense in which we are interpreting group theory
+into set theory?
+
+\section{Generalization}
+
+I used group theory and Group theory as a running example, but the
+fact is that large swaths of contemporary mathematics face this same
+issue. In abstract algebra, there are also the theories of rings,
+fields, modules, vector spaces, etc. Similarly, in point-set topology
+there is a (second order) language that we use to talk about
+individual spaces. E.g.\ we can show that the ... Nonetheless, the
+more interesting results are about the class of all topological spaces
+and the structure that class has.
+
+\section{From mathematics to physics}
+
+While the focus of this inquiry has been pure mathematics, it was
+motivated in some part by the application of mathematics in
+physics. Mature theories in physics are typically associated with
+rigorous theories of pure mathematics --- e.g.\ Einstein's general
+theory of relativity is associated with the theory of Lorentzian
+manifolds, and quantum mechanics is associated with the theory of
+Hilbert sapces (or even with $C^*$-algebras). However, philosophers of
+science have struggled with understanding the relationship between the
+theories of pure mathematics and the theories of physics.
+
+In the early days of axiomatics, it seems that the picture was roughly
+the following: suppose, accepting an idealization if necessary, that a
+physical theory (such as Einstein's special theory of relativity)
+employs a mathematical theory that can be axiomatized in first-order
+logic, e.g.\ a theory $T$ in signature $\Sigma$. Then some, but
+perhaps not all, of the symbols in $\Sigma$ can be given a direct
+physical interpretation, and some of the consequences of $T$ can
+thereby be given direct physical meaning. 
+
+As is well documented, the original syntactic view of theories was a
+failure. But we are now in a good position to see yet another reason
+why it is inadequate: the syntactic view of theories has restricted
+itself to the predicates from the signature $\Sigma$ (and those that
+can be defined from them), when even mathematicians would avail
+themselves of many more predicates. For example, imagine if we told
+group theorists that they could only use predicates from the signature
+$\Sigma$ of first-order group theory. Then there would be no
+homomorphism theorem, no classification of finite groups, etc. We
+would have to excise 90\% of the results from a typical textbook on
+group theory!
+
+So it's clear that the syntactic view of theories was based on an
+overly restrictive view of the language of mathematical theories.
+
+The semantic view of theories tried, by relaxing these assumptions, to
+achieve a more realistic acccount of (rigorous) scientific
+reasoning. However, we can now see that it goes too far to the
+opposite extreme.
+
+Advocates of the semantic view of theories typically assume that we
+are able to pick out classes of mathematical objects via some
+combination of axioms (first and higher order), or set-theoretic
+predicates, or perhaps even by intellectual intuition. I will grant
+that in most cases, we do in fact succeed at picking out categories
+such as ``Hilbert spaces'' or ``Lorentzian manifolds'' or ``simply
+connected Lie groups''.  But, and this is the key point, we need to
+say true things about these structures if we are going to use them to
+say true things about the world. And saying true things about these
+structures requires that we make a decision about which language to
+use, and which inferences to permit outselves. To say that the world
+is isomorphic to a Hilbert space means nothing if one doesn't have a
+sense of the criteria for isomorphism, i.e.\ of which structures need
+to be preserved.
+
+We cannot simply say that the world is isomorphic to a Hilbert
+spacethe syntactic view now gets its revenge: But do we really know
+But the question then is which facts are true about the relevant class
+of structures --- and that once again involves both the question of
+the language in which these facts are formulated.
+
+, and the The implicit assumption here was
+that there is a determinate set of ``facts'' about Hilbert spaces that
+are potentially relevant for talking about how Hilbert spaces
+represent the physical world. But this is precisely the problem we
+faced with Group theory: if ZF set theory is consistent, then there is
+a category $\mathbf{Grp}$ of groups living inside it. But what are the
+facts about this category?  Similarly, there is a category
+$\mathbf{Hilb}$ of Hilbert spaces living inside $U$, but what are the
+facts about this category?
+
+assumed that it is unproblematic taken a rather casual approach taken
+a rather naive and blase vie60s and the advente There are two extremes
+to which one could go in how to use mathematics to formulate a
+physical theory. First, one could look to the analogy with (little
+``g'') group theory and take the physical theory to be restricted to
+the language whose sentences receive truth values in the various
+models. So, for example, if we had a synthetic axiomatization $T$ of
+spacetime in signature $\Sigma$, then this view would only permit
+$\Sigma$-sentences to be used in formulating the physical theory. We
+wouldn't be permitted, e.g., to talk about automorphisms of models, or
+the embedding of one model in another.
+
+Clearly, this first view seems far too stringent. Physicists regularly
+talk about properties of models and relationships between them.
+
+Going to the opposite extreme, one could take a kind of semantic view
+of mathematical theories where it's assumed that there is a background
+universe $U$ of sets, and $T$ is just some class of structures inside
+$U$.
+
+\printbibliography 
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
